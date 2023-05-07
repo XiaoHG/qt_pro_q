@@ -9,20 +9,21 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    m_pQuickView = new QQuickView();
-    m_pQuickContext = m_pQuickView->rootContext();
+    m_pQuickView.reset(new QQuickView());
+    m_pQuickContext.reset(m_pQuickView->rootContext());
 
-    m_pDataManager = new DataManager();
-    m_pQuickContext->setContextProperty("dataManager", m_pDataManager);
+    m_pDataManager.reset(new DataManager());
+    m_pQuickContext->setContextProperty("dataManager", m_pDataManager.get());
+    qmlRegisterType<DataManager>("DataManager", 1, 0, "DataManager");
 
     m_pQuickView->setSource(QUrl("qrc:/qml/test_page.qml"));
-    QWidget *p_container = QWidget::createWindowContainer(m_pQuickView, this);
+    QWidget *p_container = QWidget::createWindowContainer(m_pQuickView.get(), this);
     ui->verticalLayout_qml->addWidget(p_container);
 
-    m_pQuickItem = m_pQuickView->rootObject();
+    m_pQuickItem.reset(m_pQuickView->rootObject());
 
-    connect(this, SIGNAL(notifyChangedForQml()), (QObject*)m_pQuickItem, SIGNAL(notifyChangedFromCPlus()));
-    connect((QObject*)m_pQuickItem, SIGNAL(selectedChangedForCPlus()), this, SLOT(selectedChangedFromQml()));
+    connect(this, SIGNAL(notifyChangedForQml()), (QObject*)m_pQuickItem.get(), SIGNAL(notifyChangedFromCPlus()));
+    connect((QObject*)m_pQuickItem.get(), SIGNAL(selectedChangedForCPlus()), this, SLOT(selectedChangedFromQml()));
 }
 
 MainWindow::~MainWindow()
@@ -42,5 +43,8 @@ void MainWindow::selectedChangedFromQml()
 {
     QStringList selectedList = m_pQuickItem->property("selectedList").toStringList();
     qDebug() << "qin --- MainWindow::selectedChangedFromQml(), selectedList = " << selectedList;
+
+    DataManager *data_manger = qobject_cast<DataManager*>(m_pQuickItem->findChild<QObject *>("data_manager"));
+    qDebug() << "qin --- MainWindow::selectedChangedFromQml(), data_manger->name() = " << data_manger->name();
 }
 

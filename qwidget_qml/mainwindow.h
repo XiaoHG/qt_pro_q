@@ -32,12 +32,11 @@ private slots:
 private:
     Ui::MainWindow *ui;
 
-    QQuickView *m_pQuickView;
-    QQmlContext *m_pQuickContext;
-    QQuickItem *m_pQuickItem;
+    QScopedPointer<QQuickView> m_pQuickView;
+    QScopedPointer<QQmlContext> m_pQuickContext;
+    QScopedPointer<QQuickItem> m_pQuickItem;
 
-    QQuickWidget *m_pQuickWidget;
-    DataManager *m_pDataManager;
+    QScopedPointer<DataManager> m_pDataManager;
 };
 
 #endif // MAINWINDOW_H
