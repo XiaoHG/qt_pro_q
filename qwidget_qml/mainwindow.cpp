@@ -13,17 +13,17 @@ MainWindow::MainWindow(QWidget *parent)
     m_pQuickContext.reset(m_pQuickView->rootContext());
 
     m_pDataManager.reset(new DataManager());
-    m_pQuickContext->setContextProperty("dataManager", m_pDataManager.get());
+    m_pQuickContext->setContextProperty("dataManager", m_pDataManager.data());
     qmlRegisterType<DataManager>("DataManager", 1, 0, "DataManager");
 
     m_pQuickView->setSource(QUrl("qrc:/qml/test_page.qml"));
-    QWidget *p_container = QWidget::createWindowContainer(m_pQuickView.get(), this);
+    QWidget *p_container = QWidget::createWindowContainer(m_pQuickView.data(), this);
     ui->verticalLayout_qml->addWidget(p_container);
 
     m_pQuickItem.reset(m_pQuickView->rootObject());
 
-    connect(this, SIGNAL(notifyChangedForQml()), (QObject*)m_pQuickItem.get(), SIGNAL(notifyChangedFromCPlus()));
-    connect((QObject*)m_pQuickItem.get(), SIGNAL(selectedChangedForCPlus()), this, SLOT(selectedChangedFromQml()));
+    connect(this, SIGNAL(notifyChangedForQml()), (QObject*)m_pQuickItem.data(), SIGNAL(notifyChangedFromCPlus()));
+    connect((QObject*)m_pQuickItem.data(), SIGNAL(selectedChangedForCPlus()), this, SLOT(selectedChangedFromQml()));
 }
 
 MainWindow::~MainWindow()

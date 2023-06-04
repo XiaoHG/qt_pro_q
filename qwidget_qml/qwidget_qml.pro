@@ -34,8 +34,4 @@ CONFIG(debug, debug|release){
 
 }
 
-static {
-    QT += svg
-    QTPLUGIN += qtvirtualkeyboardplugin
-}
-QT_VIRTUALKEYBOARD_STYLE=qtvirtualkeyboard myapp
+#QT_IM_MODULE=qtvirtualkeyboard

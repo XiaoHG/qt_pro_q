@@ -1,8 +1,8 @@
-import QtQuick 2.0
-import QtQuick.Controls 2.0
-import DataManager 1.0
-import QtQuick.VirtualKeyboard 2.13
+import QtQuick 2.6
+import QtQuick.Controls 2.2
+import QtQuick.VirtualKeyboard 2.3
 import QtQuick.VirtualKeyboard.Settings 2.1
+import DataManager 1.0
 
 Item{
     id: root
