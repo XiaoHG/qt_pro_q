@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file>assets/Chest.obj</file>
+    </qresource>
+</RCC>

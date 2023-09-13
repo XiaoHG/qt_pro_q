@@ -1,3 +1,2 @@
 Plugin-SymbolicName:plugin1
 Plugin-Version:1.0.0
-Plugin-Number:100 #元数据

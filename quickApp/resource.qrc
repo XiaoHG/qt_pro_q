@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/qml"/>
+    <qresource prefix="/">
+        <file>qml/mian.qml</file>
+        <file>qml/QApplicationWindow.qml</file>
+        <file>qml/application_window/QMenuBar.qml</file>
+        <file>qml/application_window/QStatusBar.qml</file>
+        <file>qml/application_window/QToolBar.qml</file>
+        <file>qml/other/QDesktopTip.qml</file>
+    </qresource>
+</RCC>
