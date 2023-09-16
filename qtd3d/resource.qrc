@@ -1,5 +1,0 @@
-<RCC>
-    <qresource prefix="/qml">
-        <file>mian.qml</file>
-    </qresource>
-</RCC>
