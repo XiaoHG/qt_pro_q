@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/">
+        <file>qml/QApplicationWindow.qml</file>
+        <file>qml/application_window/QMenuBar.qml</file>
+        <file>qml/application_window/QStatusBar.qml</file>
+        <file>qml/application_window/QToolBar.qml</file>
+    </qresource>
+    <qresource prefix="/mainwindow/META-INF">
+        <file>MANIFEST.MF</file>
+    </qresource>
+</RCC>

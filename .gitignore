@@ -2,3 +2,4 @@ build/
 *.user.*
 *.user
 build-qwidgetApp-Desktop_Qt_5_15_2_MSVC2015_64bit-Debug/*
+build-ctkApp-Desktop_Qt_5_15_2_MSVC2015_64bit-Debug/*
