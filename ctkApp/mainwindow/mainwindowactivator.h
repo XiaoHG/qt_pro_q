@@ -21,7 +21,7 @@ public:
 signals:
 
 private:
-    QSharedPointer<MainWindow> m_mainWindowPlugin;
+    MainWindow *m_mainWindowPlugin = nullptr;
 
 };
 

@@ -3,3 +3,5 @@ build/
 *.user
 build-qwidgetApp-Desktop_Qt_5_15_2_MSVC2015_64bit-Debug/*
 build-ctkApp-Desktop_Qt_5_15_2_MSVC2015_64bit-Debug/*
+build-quick3DApp-Desktop_Qt_5_15_2_MSVC2015_64bit-Debug/*
+build-qwidget3DApp-Desktop_Qt_5_15_2_MSVC2015_64bit-Debug/*

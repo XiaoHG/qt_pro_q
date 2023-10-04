@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>model/202020_40.stl</file>
+        <file>model/motobike1.obj</file>
+    </qresource>
+</RCC>

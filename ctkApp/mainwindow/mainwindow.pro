@@ -1,4 +1,6 @@
-QT       += core gui qml
+QT       += core gui qml quick widgets
+QT += 3dcore 3drender 3dinput 3dextras 3dquick 3dquickextras 3danimation
+Qt += 3dquickscene2d
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -19,13 +21,15 @@ SOURCES += \
     mainwindow.cpp \
     mainwindowactivator.cpp \
     mainwindowmanager.cpp \
-    mainwindowservice.cpp
+    mainwindowservice.cpp \
+    src/d3drendercontrol.cpp
 
 HEADERS += \
     mainwindow.h \
     mainwindowactivator.h \
     mainwindowmanager.h \
-    mainwindowservice.h
+    mainwindowservice.h \
+    src/d3drendercontrol.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

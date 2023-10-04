@@ -7,6 +7,11 @@
 #include "QQmlApplicationEngine"
 #include <QObject>
 
+#include <Qt3DQuickExtras/Qt3DQuickWindow>
+#include <Qt3DQuick/QQmlAspectEngine>
+#include <Qt3DAnimation/QAnimationAspect>
+#include <QQmlContext>
+
 class MainWindow : public QObject, public MainWindowService
 {
     Q_OBJECT
@@ -22,11 +27,12 @@ class MainWindow : public QObject, public MainWindowService
 
 public:
     explicit MainWindow(ctkPluginContext *context = nullptr);
+    ~MainWindow();
     virtual void exec();
+    Q_INVOKABLE void quit();
     void postCtkEvent(const QString &topic, const ctkDictionary &message);
 
 private:
-    void init();
     void initObj();
     void initQml();
 
@@ -34,8 +40,10 @@ signals:
 
 private:
     ctkPluginContext *m_context;
-    QQmlApplicationEngine m_engine;
-    QQmlContext *m_rootContext = nullptr;
+
+private:
+    Qt3DExtras::Quick::Qt3DQuickWindow m_view;
+    QQmlContext *m_qmlRootContext = nullptr;
 
 private:
     MainWindowManager *m_mainWindowManager = nullptr;

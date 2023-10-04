@@ -2,7 +2,6 @@
 #include <QDebug>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
-#include "QtWidgets/qapplication.h"
 
 // CTKPluginFramework includes
 #include "ctkPluginContext.h"
@@ -12,37 +11,50 @@
 MainWindow::MainWindow(ctkPluginContext *context)
     : m_context(context)
 {
-}
 
-void MainWindow::exec()
-{
-    qDebug() << Q_FUNC_INFO;
-    init();
-}
+    m_view.registerAspect(new Qt3DAnimation::QAnimationAspect());
 
-void MainWindow::init()
-{
+    m_view.setSource(QUrl("qrc:/qml/main.qml"));
+    m_view.resize(800, 600);
+    m_view.show();
 
-    m_engine.load(QUrl(QStringLiteral("qrc:/qml/QApplicationWindow.qml")));
-    QObject::connect(&m_engine, &QQmlEngine::quit, qApp, [](){
-        ctkPluginFrameworkLauncher::stop();
-        QApplication::quit();
-    });
+    //init & get qml root context.
+    m_qmlRootContext = m_view.engine()->qmlEngine()->rootContext();
 
     initObj();
     initQml();
 }
 
+MainWindow::~MainWindow()
+{
+
+}
+
+void MainWindow::exec()
+{
+    qDebug() << Q_FUNC_INFO;
+}
+
+void MainWindow::quit()
+{
+    ctkPluginFrameworkLauncher::stop();
+}
+
 void MainWindow::initObj()
 {
-    m_rootContext = m_engine.rootContext();
     m_mainWindowManager = new MainWindowManager(this);
 }
 
 void MainWindow::initQml()
 {
+    //register --- 1
     qmlRegisterType<MainWindowManager>("MainWindowManager", 1, 0, "MainWindowManager");
-    m_rootContext->setContextProperty("mainWindowManager", m_mainWindowManager);
+
+
+    //register --- 2
+    m_qmlRootContext->setContextProperty("mainWindow", this);
+    m_qmlRootContext->setContextProperty("mainWindowManager", m_mainWindowManager);
+    m_qmlRootContext->setContextProperty("d3DRenderControl", m_mainWindowManager->m_d3DRenderControl);
 }
 
 void MainWindow::postCtkEvent(const QString &topic, const ctkDictionary &message)

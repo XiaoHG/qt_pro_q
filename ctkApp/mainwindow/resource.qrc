@@ -1,9 +1,16 @@
 <RCC>
     <qresource prefix="/">
-        <file>qml/QApplicationWindow.qml</file>
-        <file>qml/application_window/QMenuBar.qml</file>
-        <file>qml/application_window/QStatusBar.qml</file>
-        <file>qml/application_window/QToolBar.qml</file>
+        <file>qml/d3d_com/DefaultSceneEntity.qml</file>
+        <file>qml/d3d_com/PickableEntity.qml</file>
+        <file>qml/d3d_com/PlaneEntity.qml</file>
+        <file>qml/d3d_com/Controller_By_Actions.qml</file>
+        <file>qml/d3d_com/Controller_By_Axes.qml</file>
+        <file>qml/d2d_com/D2dEntity.qml</file>
+        <file>qml/d2d_com/LogoControls.qml</file>
+        <file>qml/main.qml</file>
+        <file>assets/mesh/202020_40.stl</file>
+        <file>assets/mesh/motobike1.obj</file>
+        <file>qml/main_1.qml</file>
     </qresource>
     <qresource prefix="/mainwindow/META-INF">
         <file>MANIFEST.MF</file>
