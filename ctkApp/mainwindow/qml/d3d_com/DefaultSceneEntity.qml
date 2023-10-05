@@ -7,7 +7,7 @@ import Qt3D.Extras 2.10
 Entity {
     id: root
 
-    property bool isCameraEnable: true
+    property bool isCameraEnable: false
 
     components: [
         RenderSettings {

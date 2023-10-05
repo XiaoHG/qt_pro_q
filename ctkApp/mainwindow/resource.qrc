@@ -11,6 +11,7 @@
         <file>assets/mesh/202020_40.stl</file>
         <file>assets/mesh/motobike1.obj</file>
         <file>qml/main_1.qml</file>
+        <file>qml/d3d_com/D3dEntity.qml</file>
     </qresource>
     <qresource prefix="/mainwindow/META-INF">
         <file>MANIFEST.MF</file>

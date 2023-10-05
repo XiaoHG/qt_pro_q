@@ -140,10 +140,6 @@ Rectangle {
                 minimumValue: 0
                 maximumValue: 255
                 value: 128
-
-                onValueChanged: {
-                    console.log("R changed, value = " + value)
-                }
             }
         }
         RowLayout {
