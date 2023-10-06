@@ -10,34 +10,14 @@ import QtQuick.Controls 1.4
 import QtQuick.Layouts 1.2
 
 Entity {
-    id: root
-
-    components: [cubeTransform, cubeMaterial, cubeMesh, cubePicker]
+    id: d2dEntityRoot
 
     property alias logoControls: logoControls
-    property real rotationAngle: 0
-
-    Behavior on rotationAngle {
-        enabled: logoControls.enabled
-        RotationAnimation {
-            direction: RotationAnimation.Shortest
-            duration: 450
-        }
-    }
-
-    RotationAnimation on rotationAngle {
-        running: !logoControls.enabled
-        loops: Animation.Infinite
-        from: 0; to: 360
-        duration: 4000
-        onStopped: root.rotationAngle = 0
-    }
 
     Transform {
         id: cubeTransform
         translation: Qt.vector3d(2, 0, 10)
         scale3D: Qt.vector3d(1, 4, 1)
-        rotation: fromAxisAndAngle(Qt.vector3d(0,1,0), root.rotationAngle)
     }
 
     CuboidMesh {
@@ -46,6 +26,7 @@ Entity {
 
     ObjectPicker {
         id: cubePicker
+        enabled: false
         hoverEnabled: true
         dragEnabled: true
 
@@ -83,7 +64,7 @@ Entity {
             }
         }
 
-        entities: [ root ]
+        entities: [ d2dEntityRoot ]
 
         LogoControls {
             id: logoControls
@@ -91,5 +72,8 @@ Entity {
             height: offscreenTexture.height
         }
     }
+
+
+    components: [cubeTransform, cubeMaterial, cubeMesh, cubePicker]
 }
 

@@ -7,7 +7,7 @@ import Qt3D.Extras 2.10
 Entity {
     id: root
 
-    property bool isCameraEnable: false
+    property bool isCameraEnable: true
 
     components: [
         RenderSettings {
@@ -16,6 +16,7 @@ Entity {
                 frustumCulling: false
                 clearColor: "lightgray"
             }
+            pickingSettings.pickMethod: PickingSettings.TrianglePicking
         },
         // Event Source will be set by the Qt3DQuickWindow
         InputSettings { }
@@ -38,5 +39,9 @@ Entity {
         linearSpeed: 15
         lookSpeed: 120
         enabled: isCameraEnable
+    }
+
+    InputManager {
+        id: inputManager
     }
 }

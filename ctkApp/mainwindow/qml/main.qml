@@ -1,6 +1,6 @@
 /****************************************************************************
 **
-** Copyright (C) 2017 Klaralvdalens Datakonsult AB (KDAB).
+** Copyright (C) 2015 Klaralvdalens Datakonsult AB (KDAB).
 ** Contact: https://www.qt.io/licensing/
 **
 ** This file is part of the Qt3D module of the Qt Toolkit.
@@ -48,27 +48,24 @@
 **
 ****************************************************************************/
 
-import Qt3D.Core 2.9
-import Qt3D.Render 2.9
-import Qt3D.Extras 2.9
-import Qt3D.Input 2.0
-
 import QtQuick 2.0
-import QtQuick.Scene2D 2.9
-import QtQuick.Controls 1.4
-import QtQuick.Layouts 1.2
 
 import "./d2d_com"
 import "./d3d_com"
 
-DefaultSceneEntity {
-    id: sceneRoot
+Item {
+    id: mainRootItem
 
-    D3dEntity {
-        id: d3dEntity
-    }
+    Rectangle {
+        id: scene
+        anchors.fill: parent
+        color: "darkRed"
 
-    D2dEntity {
-        id: d2dEntity
+        World3D {
+            id: d3dScene
+            anchors.fill: parent
+            anchors.margins: 20
+        }
+
     }
 }

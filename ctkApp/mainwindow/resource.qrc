@@ -1,8 +1,6 @@
 <RCC>
     <qresource prefix="/">
-        <file>qml/d3d_com/DefaultSceneEntity.qml</file>
         <file>qml/d3d_com/PickableEntity.qml</file>
-        <file>qml/d3d_com/PlaneEntity.qml</file>
         <file>qml/d3d_com/Controller_By_Actions.qml</file>
         <file>qml/d3d_com/Controller_By_Axes.qml</file>
         <file>qml/d2d_com/D2dEntity.qml</file>
@@ -10,8 +8,9 @@
         <file>qml/main.qml</file>
         <file>assets/mesh/202020_40.stl</file>
         <file>assets/mesh/motobike1.obj</file>
-        <file>qml/main_1.qml</file>
-        <file>qml/d3d_com/D3dEntity.qml</file>
+        <file>qml/d3d_com/World3D.qml</file>
+        <file>qml/d3d_com/DefaultSceneEntity.qml</file>
+        <file>qml/d3d_com/InputManager.qml</file>
     </qresource>
     <qresource prefix="/mainwindow/META-INF">
         <file>MANIFEST.MF</file>

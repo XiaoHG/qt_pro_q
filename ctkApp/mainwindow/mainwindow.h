@@ -7,9 +7,7 @@
 #include "QQmlApplicationEngine"
 #include <QObject>
 
-#include <Qt3DQuickExtras/Qt3DQuickWindow>
-#include <Qt3DQuick/QQmlAspectEngine>
-#include <Qt3DAnimation/QAnimationAspect>
+#include <QQuickView>
 #include <QQmlContext>
 
 class MainWindow : public QObject, public MainWindowService
@@ -42,7 +40,7 @@ private:
     ctkPluginContext *m_context;
 
 private:
-    Qt3DExtras::Quick::Qt3DQuickWindow m_view;
+    QQuickView m_view;
     QQmlContext *m_qmlRootContext = nullptr;
 
 private:

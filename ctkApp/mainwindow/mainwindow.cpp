@@ -12,14 +12,29 @@ MainWindow::MainWindow(ctkPluginContext *context)
     : m_context(context)
 {
 
-    m_view.registerAspect(new Qt3DAnimation::QAnimationAspect());
+    {
+        // Set OpenGL requirements
+        QSurfaceFormat format = QSurfaceFormat::defaultFormat();
+#ifndef QT_OPENGL_ES_2
+        format.setVersion(4, 1);
+        format.setProfile(QSurfaceFormat::CoreProfile);
+        format.setSamples(4);
+#else
+        format.setVersion(3, 0);
+        format.setProfile(QSurfaceFormat::NoProfile);
+        format.setRenderableType(QSurfaceFormat::OpenGLES);
+#endif
+        QSurfaceFormat::setDefaultFormat(format);
+    }
+
 
     m_view.setSource(QUrl("qrc:/qml/main.qml"));
-    m_view.resize(800, 600);
+    m_view.setResizeMode(QQuickView::SizeRootObjectToView);
+    m_view.resize(1200, 900);
     m_view.show();
 
     //init & get qml root context.
-    m_qmlRootContext = m_view.engine()->qmlEngine()->rootContext();
+    m_qmlRootContext = m_view.rootContext();
 
     initObj();
     initQml();
