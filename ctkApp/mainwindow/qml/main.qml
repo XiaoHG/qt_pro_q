@@ -66,6 +66,5 @@ Item {
             anchors.fill: parent
             anchors.margins: 20
         }
-
     }
 }

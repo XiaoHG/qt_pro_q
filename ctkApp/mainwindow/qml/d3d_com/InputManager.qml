@@ -8,6 +8,8 @@ import Qt3D.Extras 2.15
 Entity {
     id: imRoot
 
+    signal keyboardEvent(var event)
+
     KeyboardDevice {
         id: keyboardDevice
     }
@@ -21,6 +23,55 @@ Entity {
         id: logicalDevice
 
         actions: [
+
+            Action {
+                inputs: ActionInput {
+                    sourceDevice: keyboardDevice
+                    buttons: [Qt.Key_Left]
+                }
+                onActiveChanged: {
+                    if( active){
+                        imRoot.keyboardEvent(Qt.Key_Left)
+                    }
+                }
+            },
+
+            Action {
+                inputs: ActionInput {
+                    sourceDevice: keyboardDevice
+                    buttons: [Qt.Key_Right]
+                }
+                onActiveChanged: {
+                    if( active){
+                        imRoot.keyboardEvent(Qt.Key_Right)
+                    }
+                }
+            },
+
+            Action {
+                inputs: ActionInput {
+                    sourceDevice: keyboardDevice
+                    buttons: [Qt.Key_Up]
+                }
+                onActiveChanged: {
+                    if( active){
+                        imRoot.keyboardEvent(Qt.Key_Up)
+                    }
+                }
+            },
+
+            Action {
+                inputs: ActionInput {
+                    sourceDevice: keyboardDevice
+                    buttons: [Qt.Key_Down]
+                }
+                onActiveChanged: {
+                    if( active){
+                        imRoot.keyboardEvent(Qt.Key_Down)
+                    }
+                }
+            },
+
             Action {
                 id: materialAction
                 inputs: ActionInput {
@@ -114,7 +165,7 @@ Entity {
                     axis: MouseDevice.Y
                 }
                 onValueChanged: {
-                    console.log("2　----------- value = " +　value)
+//                    console.log("2　----------- value = " +　value)
                 }
             }
         ]

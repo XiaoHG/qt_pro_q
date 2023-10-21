@@ -3,7 +3,5 @@
     <qresource prefix="/">
         <file>qml/mian.qml</file>
         <file>qml/qmlDoc/Qt3DDoc.qml</file>
-        <file>qml/D3DRender.qml</file>
-        <file>qml/CarCameraController.qml</file>
     </qresource>
 </RCC>

@@ -19,7 +19,11 @@ Entity {
             pickingSettings.pickMethod: PickingSettings.TrianglePicking
         },
         // Event Source will be set by the Qt3DQuickWindow
-        InputSettings { }
+        InputSettings { },
+
+        Transform {
+            id: rootEntityTransForm
+        }
     ]
 
     PhongMaterial {
@@ -43,5 +47,29 @@ Entity {
 
     InputManager {
         id: inputManager
+
+        onKeyboardEvent: {
+
+            switch (event){
+            case Qt.Key_Left:{
+                rootEntityTransForm.translation.x -= 1
+            }
+                break
+            case Qt.Key_Right:{
+                rootEntityTransForm.translation.x += 1
+            }
+                break
+            case Qt.Key_Up:{
+                rootEntityTransForm.scale += 0.1
+            }
+                break
+            case Qt.Key_Down:{
+                rootEntityTransForm.scale -= 0.1
+            }
+                break
+            default:
+                break
+            }
+        }
     }
 }
