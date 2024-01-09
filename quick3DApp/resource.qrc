@@ -2,5 +2,9 @@
     <qresource prefix="/qml"/>
     <qresource prefix="/">
         <file>qml/mian.qml</file>
+        <file>qml/dddScene/DDDScene.qml</file>
+        <file>qml/topTool/TopToolBar.qml</file>
+        <file>qml/leftTool/LeftToolBar.qml</file>
+        <file>qml/rightTool/RightToolBar.qml</file>
     </qresource>
 </RCC>

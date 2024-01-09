@@ -1,27 +1,52 @@
 import QtQuick 2.0
 import QtQuick.Window 2.0
 import QtQuick.Controls 2.5
-
-import QtQuick.Scene3D 2.15
-import Qt3D.Core 2.15
+import QtQuick.Layouts 1.3
+import "./dddScene"
+import "./topTool"
+import "./leftTool"
+import "./rightTool"
 
 Window {
     width: 900
     height: 600
     visible: true
+    title: qsTr("XiaoHG's Qt3d Eidtor")
 
-    Rectangle {
-        id: dddBackB
-        anchors.fill: parent
-        color: "green"
+    TopToolBar {
+        id: topToolBar
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.top: parent.top
+    }
 
-        Scene3D {
-            id: scene3d
+    Item {
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.top: topToolBar.bottom
+        anchors.bottom: parent.bottom
+
+        RowLayout {
             anchors.fill: parent
-            anchors.margins: 20
-            focus: true
-            aspects: ["input", "logic"]
-            entity: dddScene.rootEntity
+
+            LeftToolBar {
+                id: leftToolBar
+                Layout.fillHeight: true
+            }
+
+            DDDScene {
+                id: dddSceneqml
+                Layout.fillWidth: true
+                Layout.fillHeight: true
+            }
+
+            RightToolBar {
+                id: rightToolBar
+                Layout.fillHeight: true
+            }
         }
     }
+
+
+
 }

@@ -5,14 +5,11 @@
 #include <QDebug>
 #include <QtCore/QLoggingCategory>
 #include <QQmlApplicationEngine>
-
-
 #include <Qt3DCore/Qt3DCore>
 #include <Qt3DRender/QGeometryRenderer>
 #include <Qt3DExtras/Qt3DExtras>
 #include <Qt3DExtras/QExtrudedTextMesh>
-
-#include "dddscene.h"
+#include "dddScene/dddscene.h"
 
 int main(int argc, char *argv[])
 {

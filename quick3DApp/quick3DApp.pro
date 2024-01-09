@@ -10,17 +10,19 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    dddrootentity.cpp \
-    dddscene.cpp \
-    dddutils.cpp \
-    main.cpp
+    src/dddScene/dddrootentity.cpp \
+    src/dddScene/dddscene.cpp \
+    src/dddScene/dddutils.cpp \
+    src/main.cpp
 
 HEADERS += \
-    dddrootentity.h \
-    dddscene.h \
-    dddutils.h
+    src/dddScene/dddrootentity.h \
+    src/dddScene/dddscene.h \
+    src/dddScene/dddutils.h
 
 FORMS +=
+
+INCLUDEPATH += $${PWD}/src
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

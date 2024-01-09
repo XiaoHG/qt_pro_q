@@ -21,6 +21,13 @@ DDDScene::DDDScene(QObject *parent)
     m_dddUtils = new DDDUtils(this);
 }
 
+DDDScene::~DDDScene()
+{
+    if( m_rootEntity != nullptr ){
+        m_rootEntity->deleteLater();
+    }
+}
+
 DDDRootEntity *DDDScene::rootEntity()
 {
     return m_rootEntity;
