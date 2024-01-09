@@ -2,6 +2,5 @@
     <qresource prefix="/qml"/>
     <qresource prefix="/">
         <file>qml/mian.qml</file>
-        <file>qml/qmlDoc/Qt3DDoc.qml</file>
     </qresource>
 </RCC>

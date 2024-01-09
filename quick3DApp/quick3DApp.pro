@@ -12,11 +12,13 @@ CONFIG += c++17
 SOURCES += \
     dddrootentity.cpp \
     dddscene.cpp \
+    dddutils.cpp \
     main.cpp
 
 HEADERS += \
     dddrootentity.h \
-    dddscene.h
+    dddscene.h \
+    dddutils.h
 
 FORMS +=
 

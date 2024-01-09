@@ -27,6 +27,7 @@ namespace Qt3DExtras {
     class QForwardRenderer;
 }
 
+class DDDUtils;
 class DDDScene : public QObject
 {
     Q_OBJECT
@@ -45,6 +46,9 @@ private:
     DDDRootEntity *m_rootEntity = nullptr;
     Qt3DRender::QRenderSettings *m_renderSettings = nullptr;
     Qt3DExtras::QForwardRenderer *m_renderer = nullptr;
+
+private:
+    DDDUtils *m_dddUtils = nullptr;
 
 };
 

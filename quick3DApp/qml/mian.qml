@@ -21,7 +21,6 @@ Window {
             anchors.margins: 20
             focus: true
             aspects: ["input", "logic"]
-
             entity: dddScene.rootEntity
         }
     }
