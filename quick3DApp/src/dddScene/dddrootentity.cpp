@@ -10,22 +10,30 @@
 #include <Qt3DRender/QCamera>
 #include <Qt3DExtras/QOrbitCameraController>
 
+#include "dddutils.h"
+
+static const QColor helperPlaneColor("#585a5c");
+
 DDDRootEntity::DDDRootEntity(Qt3DCore::QNode *parent)
     : Qt3DCore::QEntity{parent}
+    , m_gridSize(3)
 {
-    createRootEntity();
+    init();
 }
 
-void DDDRootEntity::createRootEntity()
+void DDDRootEntity::init()
 {
     QQmlEngine::setObjectOwnership(this, QQmlEngine::CppOwnership);
     this->setObjectName(QStringLiteral("__internal root entity"));
 
     Qt3DRender::QCamera *camera = new Qt3DRender::QCamera();
+    camera->lens()->setPerspectiveProjection(45.0f, 50.0f/9.0f, 0.1f, 1000.0f);
     camera->setPosition(QVector3D(0, 5, 20));
     camera->setViewCenter(QVector3D(0, 0, 0));
     auto *cameraController = new Qt3DExtras::QOrbitCameraController(this);
     cameraController->setCamera(camera);
+    cameraController->setLookSpeed(180.0f);
+    cameraController->setLinearSpeed(200.0f);
 
     Qt3DRender::QRenderSettings *m_renderSettings = new Qt3DRender::QRenderSettings();
     m_renderSettings->pickingSettings()->setPickMethod(Qt3DRender::QPickingSettings::TrianglePicking);
@@ -41,17 +49,29 @@ void DDDRootEntity::createRootEntity()
     this->addComponent(new Qt3DInput::QInputSettings());
 
 
-    { // plane
-        auto *plane = new Qt3DCore::QEntity(this);
-        auto *planeMesh = new Qt3DExtras::QPlaneMesh();
-        auto *planeTransform = new Qt3DCore::QTransform();
-        auto *planeMaterial = new Qt3DExtras::QPhongMaterial(this);
-        planeMesh->setWidth(10); planeMesh->setHeight(10);
-        planeTransform->setTranslation(QVector3D(0, 0, 0));
-        planeMaterial->setDiffuse(QColor(150, 150, 150));
+    createHelperPlane();
+}
 
-        plane->addComponent(planeMaterial);
-        plane->addComponent(planeMesh);
-        plane->addComponent(planeTransform);
-    }
+void DDDRootEntity::createHelperPlane()
+{
+    m_helperPlane = new Qt3DCore::QEntity();
+    m_helperPlane->setObjectName(QStringLiteral("__internal helper plane"));
+
+    // Helper plane origin must be at the meeting point of lines, hence the odd lineCount
+    Qt3DRender::QGeometryRenderer *planeMesh = DDDUtils::createWireframePlaneMesh(51);
+
+    Qt3DExtras::QPhongMaterial *helperPlaneMaterial = new Qt3DExtras::QPhongMaterial();
+    helperPlaneMaterial->setAmbient(helperPlaneColor);
+    helperPlaneMaterial->setDiffuse(QColor(Qt::black));
+    helperPlaneMaterial->setSpecular(QColor(Qt::black));
+    helperPlaneMaterial->setShininess(0);
+
+    m_helperPlaneTransform = new Qt3DCore::QTransform();
+    m_helperPlaneTransform->setScale3D(QVector3D(m_gridSize * 25.0f, m_gridSize * 25.0f, 1.0f));
+    m_helperPlaneTransform->setRotation(
+        m_helperPlaneTransform->fromAxisAndAngle(1.0f, 0.0f, 0.0f, 90.0f));
+    m_helperPlane->addComponent(planeMesh);
+    m_helperPlane->addComponent(helperPlaneMaterial);
+    m_helperPlane->addComponent(m_helperPlaneTransform);
+    m_helperPlane->setParent(this);
 }

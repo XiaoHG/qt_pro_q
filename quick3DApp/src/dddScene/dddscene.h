@@ -35,6 +35,7 @@ class DDDScene : public QObject
 
 public:
     explicit DDDScene(QObject *parent = nullptr);
+    ~DDDScene();
 
     DDDRootEntity *rootEntity();
     void setRootEntity(DDDRootEntity *newRootEntity);

@@ -2,7 +2,6 @@
 #include <QtQuick/QQuickView>
 #include <QtQml/QQmlEngine>
 #include <QtQml/QQmlContext>
-#include <QDebug>
 #include <QtCore/QLoggingCategory>
 #include <QQmlApplicationEngine>
 #include <Qt3DCore/Qt3DCore>
